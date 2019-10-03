@@ -14,6 +14,7 @@ namespace Kitty {
         static public ConsoleColor Comment = ConsoleColor.DarkGray;
         static public ConsoleColor LineNumbers = ConsoleColor.DarkGray;
         static public ConsoleColor Other = ConsoleColor.Gray;
+        static public ConsoleColor Error = ConsoleColor.DarkRed;
     }
 
     abstract class KittyHigh {
@@ -103,7 +104,7 @@ namespace Kitty {
             src = src.Replace("\r\n", "\n");
             var lines = src.Split('\n');
             for (int i = 0; i < lines.Length; i++) {
-                LineNumber(i + 1);
+                if (linenumbers) LineNumber(i + 1);
                 word = "";
                 var singcomm = false;
                 var singstring = false;                
@@ -146,7 +147,8 @@ namespace Kitty {
             src = src.Replace("\r\n", "\r");
             var lines = src.Split('\r');
             for(int i = 0; i < lines.Length; i++) {
-                LineNumber(i + 1); Console.ForegroundColor = KittyColors.Other; Console.WriteLine(lines[i]);
+                if (linenumbers) LineNumber(i + 1); LineNumber(i + 1);
+                Console.ForegroundColor = KittyColors.Other; Console.WriteLine(lines[i]);
             }
         }
     }

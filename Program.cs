@@ -16,6 +16,8 @@ namespace Kitty {
             KittyHigh.Init();
             new KittyHighCS();
             new KittyHighNIL();
+            new KittyHighLua();
+            new KittyHighGINI();
             // Go for it
             foreach(string a in args) {
                 try {

@@ -65,6 +65,7 @@
     </Compile>
     <Compile Include="High\KittyHigh.cs" />
     <Compile Include="High\KittyHighCS.cs" />
+    <Compile Include="High\KittyHighGINI.cs" />
     <Compile Include="High\KittyHighNIL.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

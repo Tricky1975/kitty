@@ -46,6 +46,8 @@ namespace Kitty {
             KeyWords.Add("in");
             KeyWords.Add("foreach");
             KeyWords.Add("delegate");
+            KeyWords.Add("readonly");
+
             Langs["cs"] = this;
             Language = "C#";
         }

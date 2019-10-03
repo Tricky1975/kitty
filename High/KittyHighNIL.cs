@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Kitty {
-    class KittyHighNIL:KittyPL {
+    class KittyHighNIL : KittyPL {
         public KittyHighNIL() {
             // Not complete yet, but for now this will do!
             KeyWords.Add("class");
@@ -44,11 +44,41 @@ namespace Kitty {
             KeyWords.Add("for");
             KeyWords.Add("in");
             KeyWords.Add("delegate");
+            KeyWords.Add("readonly");
+
             //KeyWords.Add("foreach");
             Langs["nil"] = this;
             Language = "NIL isn't Lua";
         }
 
+
+    }
+
+    class KittyHighLua : KittyPL {
+        public KittyHighLua() {
+            // Not complete yet, but for now this will do!
+            KeyWords.Add("local");
+            KeyWords.Add("end");
+            KeyWords.Add("function");
+            KeyWords.Add("goto"); // EEEEW!
+            KeyWords.Add("if");
+            KeyWords.Add("else");
+            KeyWords.Add("elseif");
+            KeyWords.Add("do");
+            KeyWords.Add("while");
+            KeyWords.Add("true");
+            KeyWords.Add("false");
+            KeyWords.Add("return");
+            KeyWords.Add("for");
+            KeyWords.Add("in");
+            //KeyWords.Add("foreach");
+            Langs["lua"] = this;
+            Language = "Lua";
+            singcomment = "--";
+            mulcomment = true;
+            mulcommentstart = "--[[";
+            mulcommentend = "]]";
+        }
 
     }
 }

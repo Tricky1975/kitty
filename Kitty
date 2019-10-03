@@ -1,0 +1,5 @@
+#!/bin/sh
+mono kitty "$1"
+
+# This (of course) does not all kitty can do, but at least you can get things on the road... a bit... I guess... :D
+

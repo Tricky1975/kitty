@@ -3,16 +3,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TrickyUnits;
 
 namespace Kitty {
     class Program {
         static void Main(string[] args) {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine("Hello World!");
-            Console.ReadKey();
-
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
+            // Header
+            QCol.Red("Kitty "); QCol.Magenta("Coded by: Tricky\n");
+            QCol.Yellow($"(c) {MKL.CYear(2019)} Jeroen P. Broks\n\n");
+            // Init
+            Dirry.InitAltDrives();
+            KittyHigh.Init();
+            new KittyHighCS();
+            new KittyHighNIL();
+            // Go for it
+            foreach(string a in args) {
+                try {
+                    var arg = Dirry.AD(a).Replace("\\","/");
+                    QCol.Doing("Reading", arg);
+                    var src = QuickStream.LoadString(arg);
+                    var eoln = qstr.EOLNType(arg);                    
+                    QCol.Doing("EOLN", eoln);
+                    //QCol.OriCol();
+                    var ext = qstr.ExtractExt(arg).ToLower();
+                    KittyHigh Viewer = KittyHigh.Langs["OTHER"];
+                    if (KittyHigh.Langs.ContainsKey(ext)) Viewer = KittyHigh.Langs[ext];
+                    QCol.Doing("Type", Viewer.Language);
+                    Console.WriteLine();
+                    Viewer.Show(src);
+                    
+                } catch (Exception ex) {
+                    QCol.QuickError($"{ex.Message}\n");
+#if DEBUG
+                    QCol.Magenta($"{ex.StackTrace}\n\n");
+#endif
+                }
+            }
+            TrickyDebug.AttachWait();
         }
     }
 }

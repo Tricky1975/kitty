@@ -5,36 +5,35 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Kitty {
-    class KittyHighCS:KittyPL {
-
-        public KittyHighCS() {
+    class KittyHighNIL:KittyPL {
+        public KittyHighNIL() {
             // Not complete yet, but for now this will do!
-            KeyWords.Add("using");
-            KeyWords.Add("namespace");
             KeyWords.Add("class");
-            KeyWords.Add("struct");
-            KeyWords.Add("public");
+            KeyWords.Add("group");
+            KeyWords.Add("module");
+            KeyWords.Add("global");
             KeyWords.Add("private");
-            KeyWords.Add("protected");
-            KeyWords.Add("internal");            
+            KeyWords.Add("end");
+            KeyWords.Add("table");
             KeyWords.Add("void");
             KeyWords.Add("string");
             KeyWords.Add("int");
-            KeyWords.Add("char");
+            KeyWords.Add("quickmeta");
             KeyWords.Add("bool");
             KeyWords.Add("switch");
             KeyWords.Add("case");
             KeyWords.Add("default");
-            KeyWords.Add("goto"); // EEEEW!
+            // KeyWords.Add("goto"); // EEEEW!
             KeyWords.Add("if");
             KeyWords.Add("else");
+            KeyWords.Add("elseif");
             KeyWords.Add("do");
             KeyWords.Add("while");
             KeyWords.Add("true");
             KeyWords.Add("false");
             KeyWords.Add("abstract");
             KeyWords.Add("override");
-            KeyWords.Add("this");
+            KeyWords.Add("self");
             KeyWords.Add("get");
             KeyWords.Add("set");
             KeyWords.Add("try");
@@ -44,11 +43,12 @@ namespace Kitty {
             KeyWords.Add("return");
             KeyWords.Add("for");
             KeyWords.Add("in");
-            KeyWords.Add("foreach");
             KeyWords.Add("delegate");
-            Langs["cs"] = this;
-            Language = "C#";
+            //KeyWords.Add("foreach");
+            Langs["nil"] = this;
+            Language = "NIL isn't Lua";
         }
+
 
     }
 }

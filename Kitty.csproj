@@ -64,6 +64,7 @@
       <Link>TrickyUnits\TrickyDbg.cs</Link>
     </Compile>
     <Compile Include="High\KittyHigh.cs" />
+    <Compile Include="High\KittyHighBlitzBasic.cs" />
     <Compile Include="High\KittyHighBrainFuck.cs" />
     <Compile Include="High\KittyHighC.cs" />
     <Compile Include="High\KittyHighCS.cs" />

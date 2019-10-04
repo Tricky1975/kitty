@@ -72,6 +72,7 @@ namespace Kitty {
             KeyWords.Add("superstrict");
             KeyWords.Add("const");
             KeyWords.Add("not");
+            KeyWords.Add("repeat");
 
             KeyWords.Add("rem"); // Although I must set some things right here...
 
@@ -84,6 +85,9 @@ namespace Kitty {
             KeyWords.Add("endrem");
             KeyWords.Add("wend");
             KeyWords.Add("next");
+            KeyWords.Add("until");
+            KeyWords.Add("forever");
+
 
             Langs["bmx"] = this;
             Language = "BlitzMax";
@@ -91,4 +95,5 @@ namespace Kitty {
 
     }
 }
+
 

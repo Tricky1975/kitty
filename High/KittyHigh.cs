@@ -131,7 +131,7 @@ namespace Kitty {
                     } else if (mulcomm) {
                         Console.ForegroundColor = KittyColors.Comment;
                         Console.Write($"{ch}");
-                        if (p < lines[i].Length  && lines[i].Substring(p, stringend.Length) == mulcommentend)
+                        if (p < lines[i].Length- (mulcommentend.Length-1) && lines[i].Substring(p, mulcommentend.Length) == mulcommentend)
                             mulcomm = false;
                     } else if (singcomm) {
                         Console.ForegroundColor = KittyColors.Comment;

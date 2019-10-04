@@ -6,6 +6,7 @@ namespace Kitty {
             // Not complete yet, but for now this will do!
             caseinsensitive = true;
             singcomment = "'";
+            escape = '~';
             KeyWords.Add("import");
             KeyWords.Add("module");
             KeyWords.Add("type");

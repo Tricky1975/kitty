@@ -8,6 +8,7 @@ namespace Kitty {
     class KittyHighNIL : KittyPL {
         public KittyHighNIL() {
             // Not complete yet, but for now this will do!
+            KeyWords.Add("not");
             KeyWords.Add("class");
             KeyWords.Add("group");
             KeyWords.Add("module");
@@ -74,14 +75,14 @@ namespace Kitty {
             KeyWords.Add("for");
             KeyWords.Add("in");
             KeyWords.Add("break");
-            KeyWords.Add("nil");
-            //KeyWords.Add("foreach");
+            KeyWords.Add("nil");            
             Langs["lua"] = this;
             Language = "Lua";
             singcomment = "--";
             mulcomment = true;
             mulcommentstart = "--[[";
             mulcommentend = "]]";
+            KeyWords.Add("not");
         }
 
     }

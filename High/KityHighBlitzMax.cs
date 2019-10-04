@@ -51,6 +51,7 @@ namespace Kitty {
             KeyWords.Add("strict");
             KeyWords.Add("superstrict");
             KeyWords.Add("const");
+            KeyWords.Add("not");
 
             KeyWords.Add("rem"); // Although I must set some things right here...
 

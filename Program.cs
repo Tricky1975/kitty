@@ -21,6 +21,7 @@ namespace Kitty {
             new KittyBlitzMax();
             new KittyHighC();
             new KittyHighPascal();
+            new KittyHighBrainFuck();
             var slin = true;
             // Go for it
             foreach(string a in args) {

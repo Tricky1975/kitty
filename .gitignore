@@ -263,3 +263,8 @@ __pycache__/
 
 # My own build script as it's useless to anyone who is not me
 bld.ps1
+
+# MKL stuff
+MKL*
+*.MKL.*
+

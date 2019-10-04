@@ -18,7 +18,7 @@
 // 3. This notice may not be removed or altered from any source distribution.
 // EndLic
 
-namespace Kitty.High {
+namespace Kitty {
     class KittyHighSASKIA:KittyPL {
 
 
@@ -52,5 +52,5 @@ namespace Kitty.High {
 
 
 }
-}
+
 

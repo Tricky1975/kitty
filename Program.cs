@@ -19,6 +19,7 @@ namespace Kitty {
             new KittyHighLua();
             new KittyHighGINI();
             new KittyBlitzMax();
+            new KittyHighC();
             var slin = true;
             // Go for it
             foreach(string a in args) {

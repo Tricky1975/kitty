@@ -68,6 +68,7 @@
     <Compile Include="High\KittyHighC.cs" />
     <Compile Include="High\KittyHighCS.cs" />
     <Compile Include="High\KittyHighGINI.cs" />
+    <Compile Include="High\KittyHighGo.cs" />
     <Compile Include="High\KittyHighNIL.cs" />
     <Compile Include="High\KittyHighPascal.cs" />
     <Compile Include="High\KityHighBlitzMax.cs" />

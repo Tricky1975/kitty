@@ -22,6 +22,7 @@ namespace Kitty {
             new KittyHighC();
             new KittyHighPascal();
             new KittyHighBrainFuck();
+            new KittyHighGo();
             var slin = true;
             // Go for it
             foreach(string a in args) {

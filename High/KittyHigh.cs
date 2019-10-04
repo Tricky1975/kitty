@@ -67,6 +67,7 @@ namespace Kitty {
         protected bool mulcomment = true;
         protected bool mulcommentfullline = false; // Needed for BlitzMax where commands taking up a full line are used for multi line comments. This is not entirely fool-proof, but it'll have to do.
         protected bool caseinsensitive = false;
+        protected bool supcom = true;
         
 
         public override void Show(string src, bool linenumbers = false) {
@@ -137,7 +138,7 @@ namespace Kitty {
                     var ch = lines[i][p];
                     // Console.WriteLine($"DEBUG! {lines[i].Substring(p, singcomment.Length)} {singcomment}");
                     wassingstring = singstring;
-                    singcomm = singcomm || (p < lines[i].Length - 1 && lines[i].Substring(p, singcomment.Length) == singcomment && (!singstring) && (!mulcomm));
+                    singcomm = singcomm || (p < lines[i].Length - 1 && lines[i].Substring(p, singcomment.Length) == singcomment && (!singstring) && (!mulcomm) && supcom);
                     mulcomm = mulcomm || (p < lines[i].Length - 1 && lines[i].Substring(p, mulcommentstart.Length) == mulcommentstart && (!singstring) & (!singcomm) && mulcomment);
                     singstring = singstring || (p < lines[i].Length - 1 && lines[i].Substring(p, stringstart.Length) == stringstart && (!singcomm) && (!mulcomm));
                     if (singstring) {
@@ -182,5 +183,6 @@ namespace Kitty {
         }
     }
 }
+
 
 

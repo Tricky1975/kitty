@@ -45,6 +45,7 @@ namespace Kitty {
             new KittyHighBlitzBasic();
             new KittyHighSASKIA();
             new KittyHighPython();
+            new KittyHighJavaScript();
             var slin = true;
             // Go for it
             foreach(string a in args) {
@@ -82,6 +83,7 @@ namespace Kitty {
         }
     }
 }
+
 
 
 

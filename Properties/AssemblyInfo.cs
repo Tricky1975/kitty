@@ -29,7 +29,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Kitty")]
-[assembly: AssemblyCopyright("Copyright Ã‚Â©  2019")]
+[assembly: AssemblyCopyright("Copyright (c) Jeroen P. Broks  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

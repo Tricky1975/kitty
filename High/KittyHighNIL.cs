@@ -45,7 +45,8 @@ namespace Kitty {
             KeyWords.Add("in");
             KeyWords.Add("delegate");
             KeyWords.Add("readonly");
-
+            KeyWords.Add("new");
+            KeyWords.Add("break");
             //KeyWords.Add("foreach");
             Langs["nil"] = this;
             Language = "NIL isn't Lua";
@@ -71,6 +72,7 @@ namespace Kitty {
             KeyWords.Add("return");
             KeyWords.Add("for");
             KeyWords.Add("in");
+            KeyWords.Add("break");
             //KeyWords.Add("foreach");
             Langs["lua"] = this;
             Language = "Lua";

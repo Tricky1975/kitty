@@ -259,3 +259,7 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+
+
+# My own build script as it's useless to anyone who is not me
+bld.ps1

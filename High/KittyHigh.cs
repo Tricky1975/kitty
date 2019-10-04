@@ -46,12 +46,13 @@ namespace Kitty {
         protected string mulcommentend = "*/";
         protected char escape = '\\';
         protected bool mulcomment = true;
+        protected bool caseinsensitive = false;
 
         public override void Show(string src, bool linenumbers = false) {
             string word = "";
             void showword() {
                 var col = KittyColors.Other;
-                if (KeyWords.Contains(word))
+                if (KeyWords.Contains(word) || (caseinsensitive && KeyWords.Contains(word.ToLower())))
                     col = KittyColors.KeyWord;
                 else {
                     switch (word.Substring(0, 1).ToUpper()) { // Not the most elegant method, but what works, that works!

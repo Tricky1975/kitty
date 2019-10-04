@@ -46,7 +46,9 @@ namespace Kitty {
         protected string mulcommentend = "*/";
         protected char escape = '\\';
         protected bool mulcomment = true;
+        protected bool mulcommentfullline = false; // Needed for BlitzMax where commands taking up a full line are used for multi line comments. This is not entirely fool-proof, but it'll have to do.
         protected bool caseinsensitive = false;
+        
 
         public override void Show(string src, bool linenumbers = false) {
             string word = "";
@@ -104,6 +106,7 @@ namespace Kitty {
             }
             src = src.Replace("\r\n", "\n");
             var lines = src.Split('\n');
+            var mulcomm = false;
             for (int i = 0; i < lines.Length; i++) {
                 if (linenumbers) LineNumber(i + 1);
                 word = "";
@@ -115,15 +118,21 @@ namespace Kitty {
                     var ch = lines[i][p];
                     // Console.WriteLine($"DEBUG! {lines[i].Substring(p, singcomment.Length)} {singcomment}");
                     wassingstring = singstring;
-                    singcomm = singcomm || (p < lines[i].Length - 1 && lines[i].Substring(p, singcomment.Length) == singcomment && (!singstring));
-                    singstring = singstring || (p < lines[i].Length - 1 && lines[i].Substring(p, stringstart.Length) == stringstart && (!singcomm));
+                    singcomm = singcomm || (p < lines[i].Length - 1 && lines[i].Substring(p, singcomment.Length) == singcomment && (!singstring) && (!mulcomm));
+                    mulcomm = mulcomm || (p < lines[i].Length - 1 && lines[i].Substring(p, mulcommentstart.Length) == mulcommentstart && (!singstring) & (!singcomm) && mulcomment);
+                    singstring = singstring || (p < lines[i].Length - 1 && lines[i].Substring(p, stringstart.Length) == stringstart && (!singcomm) && (!mulcomm));
                     if (singstring) {
                         Console.ForegroundColor = KittyColors.String;
                         Console.Write($"{ch}");
-                        if (wassingstring && p < lines[i].Length - 1 && lines[i].Substring(p, stringend.Length) == stringend && !stringescape)
+                        if (wassingstring && p < lines[i].Length  && lines[i].Substring(p, stringend.Length) == stringend && !stringescape)
                             singstring = false;
                         else
-                            stringescape = ch == escape&& !stringescape;
+                            stringescape = ch == escape && !stringescape;
+                    } else if (mulcomm) {
+                        Console.ForegroundColor = KittyColors.Comment;
+                        Console.Write($"{ch}");
+                        if (p < lines[i].Length  && lines[i].Substring(p, stringend.Length) == mulcommentend)
+                            mulcomm = false;
                     } else if (singcomm) {
                         Console.ForegroundColor = KittyColors.Comment;
                         Console.Write($"{ch}");

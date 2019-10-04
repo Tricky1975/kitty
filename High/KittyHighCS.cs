@@ -49,6 +49,7 @@ namespace Kitty {
             KeyWords.Add("readonly");
             KeyWords.Add("new");
             KeyWords.Add("break");
+            KeyWords.Add("null");
 
             Langs["cs"] = this;
             Language = "C#";

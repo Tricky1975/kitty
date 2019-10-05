@@ -27,7 +27,7 @@ Now Kitty has NO built-in support for wild cards, which can be a bit of a bummer
 Kitty has been coded in C#, and therefore uses the .NET Framework. When you use programs like Mono, Kitty should work
 ~~~shell
 mono Kitty.exe "SourceFile.c"
-# Of course thatis that Kitty.exe is in a directory Mono can fine XD
+# Of course that is if Kitty.exe is in a directory Mono can fine XD
 ~~~
 
 # Supported Languages

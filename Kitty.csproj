@@ -76,6 +76,7 @@
     <Compile Include="High\KittyHighPascal.cs" />
     <Compile Include="High\KittyHighPython.cs" />
     <Compile Include="High\KittyHighSASKIA.cs" />
+    <Compile Include="High\KittyHighScyndi.cs" />
     <Compile Include="High\KittyHighWhiteSpace.cs" />
     <Compile Include="High\KityHighBlitzMax.cs" />
     <Compile Include="Program.cs" />

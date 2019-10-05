@@ -37,6 +37,7 @@ namespace Kitty {
             new KittyHighNIL();
             new KittyHighLua();
             new KittyHighGINI();
+            new KittyHighScyndi();
             new KittyBlitzMax();
             new KittyHighC();
             new KittyHighPascal();
@@ -85,6 +86,7 @@ namespace Kitty {
         }
     }
 }
+
 
 
 

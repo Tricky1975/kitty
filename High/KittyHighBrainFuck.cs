@@ -1,7 +1,7 @@
 // Lic:
 // High/KittyHighBrainFuck.cs
 // Kitty
-// version: 19.10.04
+// version: 19.10.05
 // Copyright (C)  Jeroen P. Broks
 // This software is provided 'as-is', without any express or implied
 // warranty.  In no event will the authors be held liable for any damages
@@ -17,6 +17,7 @@
 // misrepresented as being the original software.
 // 3. This notice may not be removed or altered from any source distribution.
 // EndLic
+
 using System;
 
 namespace Kitty {
@@ -61,6 +62,7 @@ namespace Kitty {
         }
     }
 }
+
 
 
 

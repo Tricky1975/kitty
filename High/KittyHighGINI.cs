@@ -25,7 +25,7 @@ namespace Kitty {
         enum GINIStage  {None,List, Var, Comment };
 
         public KittyHighGINI() {
-            KittyHigh.Langs["gini"] = this;
+            Langs["gini"] = this;
             Language= "GINI Is Not Ini";
         }
 

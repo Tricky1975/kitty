@@ -46,6 +46,7 @@ namespace Kitty {
             new KittyHighSASKIA();
             new KittyHighPython();
             new KittyHighJavaScript();
+            new KittyHighWhiteSpace();
             var slin = true;
             // Go for it
             foreach(string a in args) {

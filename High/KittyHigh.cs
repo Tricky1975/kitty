@@ -1,7 +1,7 @@
 // Lic:
 // High/KittyHigh.cs
 // Kitty
-// version: 19.10.04
+// version: 19.10.05
 // Copyright (C)  Jeroen P. Broks
 // This software is provided 'as-is', without any express or implied
 // warranty.  In no event will the authors be held liable for any damages
@@ -175,14 +175,15 @@ namespace Kitty {
         public KittyNiks() { Language = "Unrecognized"; }
         public override void Show(string src, bool linenumbers = false) {
             src = src.Replace("\r\n", "\r");
-            var lines = src.Split('\r');
+            var lines = src.Split('\n');
             for(int i = 0; i < lines.Length; i++) {
-                if (linenumbers) LineNumber(i + 1); LineNumber(i + 1);
+                if (linenumbers) LineNumber(i + 1); 
                 Console.ForegroundColor = KittyColors.Other; Console.WriteLine(lines[i]);
             }
         }
     }
 }
+
 
 
 

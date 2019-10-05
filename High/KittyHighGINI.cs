@@ -1,7 +1,7 @@
 // Lic:
 // High/KittyHighGINI.cs
 // Kitty
-// version: 19.10.04
+// version: 19.10.05
 // Copyright (C)  Jeroen P. Broks
 // This software is provided 'as-is', without any express or implied
 // warranty.  In no event will the authors be held liable for any damages
@@ -92,5 +92,6 @@ namespace Kitty {
         }
     }
 }
+
 
 

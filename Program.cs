@@ -50,6 +50,7 @@ namespace Kitty {
             new KittyHighWhiteSpace();
             new KittyHighBASIC();
             new KittyHighJava();
+            new KittyHighINI();
             var slin = true;
             // Go for it
             foreach(string a in args) {
@@ -87,6 +88,7 @@ namespace Kitty {
         }
     }
 }
+
 
 
 

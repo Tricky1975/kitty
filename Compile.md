@@ -9,11 +9,11 @@ I used Visual Studio 2017... Not sure if that matters, but to be sure that a wro
 First of all create a folder where you want my projects to live in general and from there:
 ~~~powershell
 
-git clone https://Tricky1975/kitty Kitty
+git clone "https://github.com/Tricky1975/kitty.git" Kitty
 # NOTE: 
 # In Windows you can leave the second "Kitty" out, but on Linux I recommend NOT to due to case sensitivity issues
 
-git clone https://github.com/Tricky1975/trickyunits_csharp TrickyUnits
+git clone "https://github.com/Tricky1975/trickyunits_csharp.git" TrickyUnits
 
 cd Kitty
 

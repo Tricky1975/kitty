@@ -10,14 +10,17 @@ First of all create a folder where you want my projects to live in general and f
 ~~~powershell
 
 git clone https://Tricky1975/kitty Kitty
-# NOTE: In Windows you can leave the second "Kitty" out, but on Linux I recommend NOT to due to case sensitivity issues
+# NOTE: 
+# In Windows you can leave the second "Kitty" out, but on Linux I recommend NOT to due to case sensitivity issues
 
 git clone https://github.com/Tricky1975/trickyunits_csharp TrickyUnits
 
-cd TrickUnits
+cd Kitty
 
 msbuild
-# This of course if msbuild is in your path somewhere. and "msbuild" should know by itself that since Kitty.sln is the only solution file, that is the file to compile from.
+# This of course if msbuild is in your path somewhere.
+# And "msbuild" should know by itself that since Kitty.sln is the only solution file, 
+#that is the file to compile from.
 ~~~
 
 Perhaps I should make a project manager for my C# projects 

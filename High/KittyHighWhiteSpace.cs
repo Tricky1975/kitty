@@ -44,7 +44,7 @@ namespace Kitty {
                     Console.Write(lines[i][p]);
                 }
                 Console.ResetColor();
-                Console.WriteLine();
+                WriteLine();
             }
         }
     }

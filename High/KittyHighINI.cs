@@ -30,34 +30,34 @@ namespace Kitty {
         public override void Show(string src, bool linenumbers = false) {
             src = src.Replace("\r\n", "\n");
             var lines = src.Split('\n');            
-            //Console.WriteLine($"SOURCE>{lines.Length}/{lines[0]}");
+            //WriteLine($"SOURCE>{lines.Length}/{lines[0]}");
             for (int i = 0; i < lines.Length; i++) {
                 if (linenumbers) LineNumber(i + 1); //LineNumber(i + 1);
                 var line = lines[i].Trim();
                 if (line == "") {
-                    Console.WriteLine();
+                    WriteLine();
                 } else if ((line[0] == '[' || line[line.Length - 1] == ']')) {
                     if (!(line[0] == '[' && line[line.Length - 1] == ']')) {
                         Console.ForegroundColor = KittyColors.Error;
                     } else {
                         Console.ForegroundColor = KittyColors.KeyWord;
-                        Console.WriteLine(lines[i]);
+                        WriteLine(lines[i]);
                     }
                 } else if (line.Trim()[0] == ';') {
                     Console.ForegroundColor = KittyColors.Comment;
-                    Console.WriteLine(lines[i]);
+                    WriteLine(lines[i]);
                 } else {
                     var isteken = lines[i].IndexOf('=');
                     if (isteken <= 0) isteken = lines[i].IndexOf(':');
                     if (isteken <= 0) {
-                        Console.ForegroundColor = KittyColors.Error; Console.WriteLine(lines[i]);
+                        Console.ForegroundColor = KittyColors.Error; WriteLine(lines[i]);
                     } else {
                         Console.ForegroundColor = KittyColors.Identifier;
                         Console.Write(lines[i].Substring(0, isteken));
                         Console.ForegroundColor = KittyColors.Other;
                         Console.Write(lines[i][isteken]);
                         Console.ForegroundColor = KittyColors.String;
-                        Console.WriteLine(lines[i].Substring(isteken + 1));
+                        WriteLine(lines[i].Substring(isteken + 1));
                     }
                 }
                 

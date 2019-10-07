@@ -57,7 +57,7 @@ namespace Kitty {
                     }
                     Console.Write(lines[i][p]);
                 }
-                Console.WriteLine();
+                WriteLine();
             }
         }
     }

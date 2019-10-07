@@ -52,28 +52,51 @@ namespace Kitty {
             new KittyHighJava();
             new KittyHighINI();
             var slin = true;
+            if (args.Length == 0) {
+                QCol.Green("Kitty is a simple program which will help you view source files in syntax highlight\n");
+                QCol.Magenta("Usage:\t");
+                QCol.Yellow("Kitty ");
+                QCol.Cyan("<switches> ");
+                QCol.White("<files>");
+                QCol.Green("[");
+                QCol.Cyan("<switches> ");
+                QCol.White("<files>");
+                QCol.Green("..]");
+                Console.WriteLine("\n\n");
+                QCol.Yellow("Please note that switches affect all files defined after it not those that come before it. This allows you to configure each file shown\n\n");
+                QCol.Cyan("-ln              "); QCol.Yellow("Toggle line numbers on/off (default is on)\n");
+                QCol.Cyan("-nolinenumbers   "); QCol.Yellow("Turn line numbers off\n");
+                QCol.Cyan("-Showlinenumbers "); QCol.Yellow("Turn line numbers on\n");
+                QCol.Cyan("-p, -more        "); QCol.Yellow("Turn \"more\" mode on/off. (Read note below)\n");
+                QCol.Red("The \"more\" mode!\n");
+                QCol.Yellow("Does not entirely work the same as the 'more' utility, but has the same primary function!\n");
+                QCol.Yellow("When the \"more\" bar appears you can hit space to show the next line, Enter/Return to show the entire next page and escape to turn the more mode off\n");
+                QCol.White("\n\nKitty can be used as as CLI tool, but the integry has been made to be included in your own projects, and has been released under the terms of the zlib license\n\n");
+                return;
+            }
             // Go for it
-            foreach(string a in args) {
+            foreach (string a in args) {
                 if (qstr.Prefixed(a, "-")) {
                     switch (a.ToLower()) {
                         case "-ln": slin = !slin; break;
                         case "-nolinenumbers": slin = false; break;
                         case "-showlinenumbers":slin = true; break;
+                        case "-p": case "-more": KittyHigh.BrkLines = !KittyHigh.BrkLines; break;
                         default: QCol.QuickError($"Unknown switch: {a}"); break;
                     }
                 } else {
                     try {
                         var arg = Dirry.AD(a).Replace("\\", "/");
-                        QCol.Doing("Reading", arg);
+                        QCol.Doing("Reading", arg); KittyHigh.PageBreak();
                         var src = QuickStream.LoadString(arg);
                         var eoln = qstr.EOLNType(arg);
-                        QCol.Doing("EOLN", eoln);
+                        // QCol.Doing("EOLN", eoln); // didn't work anyway
                         //QCol.OriCol();
                         var ext = qstr.ExtractExt(arg).ToLower();
                         KittyHigh Viewer = KittyHigh.Langs["OTHER"];
                         if (KittyHigh.Langs.ContainsKey(ext)) Viewer = KittyHigh.Langs[ext];
-                        QCol.Doing("Type", Viewer.Language);
-                        Console.WriteLine();
+                        QCol.Doing("Type", Viewer.Language); KittyHigh.PageBreak();
+                        KittyHigh.WriteLine();
                         Viewer.Show(src, slin);
 
                     } catch (Exception ex) {

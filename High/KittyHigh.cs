@@ -38,6 +38,50 @@ namespace Kitty {
 
     abstract class KittyHigh {
         static readonly public Dictionary<string, KittyHigh> Langs = new Dictionary<string, KittyHigh>();
+        static readonly public int NumLines = Console.WindowHeight;
+        static public int PagLines = 0;
+        static public bool BrkLines = false;
+
+        static public void PageBreak() {
+            if (!BrkLines) return;
+            PagLines++;
+            if (PagLines>=NumLines-2) {
+                Console.Write(" ");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.BackgroundColor = ConsoleColor.Cyan;
+                Console.Write(" More ");
+                Console.ResetColor();
+                Console.Write("\b\b\b\b\b\b\b");
+                ConsoleKeyInfo k;
+                bool loopme = true;
+                do {
+                    loopme = false;
+                    k = Console.ReadKey(true);
+                    Console.Write("       ");
+                    Console.Write("\b\b\b\b\b\b\b");
+                    switch (k.Key) {
+                        case ConsoleKey.Enter:
+                            PagLines = 0;
+                            break;
+                        case ConsoleKey.Spacebar:
+                            PagLines--;
+                            break;
+                        case ConsoleKey.Escape:
+                            BrkLines = false;
+                            break;
+                        default:
+                            loopme = true;
+                            break;
+                    }
+                } while (loopme);
+            }
+        }
+
+        public static void WriteLine(string a="") {
+            Console.WriteLine(a);
+            PageBreak();
+        }
+
         public abstract void Show(string src, bool linenumbers = false);
         public void Show(StringBuilder src, bool linenumbers = false) => Show(src, linenumbers);
         public string Language { get; protected set; } = "";
@@ -165,7 +209,7 @@ namespace Kitty {
                     }
                 }
                 if (word != "") showword();
-                Console.WriteLine();
+                WriteLine();
             }
 
         }
@@ -178,7 +222,7 @@ namespace Kitty {
             var lines = src.Split('\n');
             for(int i = 0; i < lines.Length; i++) {
                 if (linenumbers) LineNumber(i + 1); 
-                Console.ForegroundColor = KittyColors.Other; Console.WriteLine(lines[i]);
+                Console.ForegroundColor = KittyColors.Other; WriteLine(lines[i]);
             }
         }
     }

@@ -65,27 +65,27 @@ namespace Kitty {
                 } else {
                     switch (stage) {
                         case GINIStage.None:
-                            Console.ForegroundColor = KittyColors.Error; Console.WriteLine(lines[i]); break;
+                            Console.ForegroundColor = KittyColors.Error; WriteLine(lines[i]); break;
                         case GINIStage.List:
-                            Console.ForegroundColor = KittyColors.String; Console.WriteLine(lines[i]); break;
+                            Console.ForegroundColor = KittyColors.String; WriteLine(lines[i]); break;
                         case GINIStage.Comment:
-                            Console.ForegroundColor = KittyColors.Comment; Console.WriteLine(lines[i]); break;
+                            Console.ForegroundColor = KittyColors.Comment; WriteLine(lines[i]); break;
                         case GINIStage.Var: {
                                 var isteken = lines[i].IndexOf('=');
                                 if (isteken <= 0) {
-                                    Console.ForegroundColor = KittyColors.Error; Console.WriteLine(lines[i]);
+                                    Console.ForegroundColor = KittyColors.Error; WriteLine(lines[i]);
                                 } else {
                                     Console.ForegroundColor = KittyColors.Identifier;
                                     Console.Write(lines[i].Substring(0, isteken));
                                     Console.ForegroundColor = KittyColors.Other;
                                     Console.Write("=");
                                     Console.ForegroundColor = KittyColors.String;
-                                    Console.WriteLine(lines[i].Substring(isteken + 1));
+                                    WriteLine(lines[i].Substring(isteken + 1));
                                 }
                                 break;
                             }
                         default:
-                            Console.ForegroundColor = KittyColors.Error; Console.WriteLine($"???>{lines[i]}"); break;
+                            Console.ForegroundColor = KittyColors.Error; WriteLine($"???>{lines[i]}"); break;
                     }
                 }
             }

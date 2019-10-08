@@ -1,7 +1,7 @@
 // Lic:
 // High/KittyHighNIL.cs
 // Kitty
-// version: 19.10.04
+// version: 19.10.08
 // Copyright (C)  Jeroen P. Broks
 // This software is provided 'as-is', without any express or implied
 // warranty.  In no event will the authors be held liable for any damages
@@ -63,6 +63,11 @@ namespace Kitty {
             KeyWords.Add("new");
             KeyWords.Add("break");
             KeyWords.Add("nil");
+            KeyWords.Add("extends");
+
+            KeyWords.Add("CONSTRUCTOR");
+            KeyWords.Add("DESTRUCTOR");
+
             //KeyWords.Add("foreach");
             Langs["nil"] = this;
             Language = "NIL isn't Lua";
@@ -101,5 +106,6 @@ namespace Kitty {
 
     }
 }
+
 
 

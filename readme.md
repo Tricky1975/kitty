@@ -51,6 +51,7 @@ On the moment this document was updated, the next languages were supported:
 - Python (.py)
 - SAKSIA (.saskia)
 - [Scyndi](https://github.com/Wendicka/Scyndi)
+- VisualBasic (.vb)
 - Whitespace (.ws)
 
 More might be added later, but no promises yet ;)

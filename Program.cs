@@ -51,6 +51,7 @@ namespace Kitty {
             new KittyHighBASIC();
             new KittyHighJava();
             new KittyHighINI();
+            new KittyHighVB();
             var slin = true;
             if (args.Length == 0) {
                 QCol.Green("Kitty is a simple program which will help you view source files in syntax highlight\n");

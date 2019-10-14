@@ -24,10 +24,8 @@ namespace Kitty {
 
             Langs["vb"] = this;
             Language = "VisualBasic";
-            singcomment = "//";
-            mulcomment = true;
-            mulcommentstart = "/*";
-            mulcommentend = "*/";
+            singcomment = "'";
+            mulcomment = false;
             KeyWords.Add("AddHandler");
             KeyWords.Add("AddressOf");
             KeyWords.Add("AndAlso");

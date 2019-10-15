@@ -18,6 +18,8 @@
 // 3. This notice may not be removed or altered from any source distribution.
 // EndLic
 namespace Kitty {
+
+    // Visual Basic support by freezernick
     class KittyHighVB : KittyPL {
 
         public KittyHighVB() {

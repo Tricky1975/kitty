@@ -178,6 +178,45 @@ namespace Kitty {
             KeyWords.Add("WithEvents");
             KeyWords.Add("WriteOnly");
             KeyWords.Add("Xor");
+
+            // Unreserved Keywords
+
+            KeyWords.Add("Aggregate");
+            KeyWords.Add("Ansi");
+            KeyWords.Add("Assembly");
+            KeyWords.Add("Async");
+            KeyWords.Add("Auto");
+            KeyWords.Add("Await");
+            KeyWords.Add("Binary");
+            KeyWords.Add("Compare");
+            KeyWords.Add("Custom");
+            KeyWords.Add("Distinct");
+            KeyWords.Add("Equals");
+            KeyWords.Add("Explicit");
+            KeyWords.Add("From");
+            KeyWords.Add("Group");
+            KeyWords.Add("By");
+            KeyWords.Add("Join");
+            KeyWords.Add("Into");
+            KeyWords.Add("IsFalse");
+            KeyWords.Add("IsTrue");
+            KeyWords.Add("Iterator");
+            KeyWords.Add("Key");
+            KeyWords.Add("Mid");
+            KeyWords.Add("Off");
+            KeyWords.Add("Order");
+            KeyWords.Add("Preserve");
+            KeyWords.Add("Skip");
+            KeyWords.Add("While");
+            KeyWords.Add("Strict");
+            KeyWords.Add("Take");
+            KeyWords.Add("Text");
+            KeyWords.Add("Unicode");
+            KeyWords.Add("Until");
+            KeyWords.Add("Where");
+            KeyWords.Add("Yield");
+
+            // Region & External Source
         }
 
     }

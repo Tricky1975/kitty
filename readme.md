@@ -50,7 +50,7 @@ On the moment this document was updated, the next languages were supported:
 - Pascal (.pas)
 - Python (.py)
 - SAKSIA (.saskia)
-- [Scyndi](https://github.com/Wendicka/Scyndi)
+- [Scyndi](https://github.com/Wendicka/Scyndi) (.ssf/.scf)
 - VisualBasic (.vb)
 - Whitespace (.ws)
 

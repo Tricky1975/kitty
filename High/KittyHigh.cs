@@ -37,7 +37,7 @@ namespace Kitty {
     }
 
     abstract class KittyHigh {
-        static readonly public Dictionary<string, KittyHigh> Langs = new Dictionary<string, KittyHigh>();
+        static readonly public SortedDictionary<string, KittyHigh> Langs = new SortedDictionary<string, KittyHigh>();
         static readonly public int NumLines = Console.WindowHeight;
         static public int PagLines = 0;
         static public bool BrkLines = false;

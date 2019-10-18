@@ -52,6 +52,7 @@ namespace Kitty {
             new KittyHighJava();
             new KittyHighINI();
             new KittyHighVB();
+            new KittyHighCobra();
             var slin = true;
             if (args.Length == 0) {
                 QCol.Green("Kitty is a simple program which will help you view source files in syntax highlight\n");
@@ -69,6 +70,7 @@ namespace Kitty {
                 QCol.Cyan("-nolinenumbers   "); QCol.Yellow("Turn line numbers off\n");
                 QCol.Cyan("-Showlinenumbers "); QCol.Yellow("Turn line numbers on\n");
                 QCol.Cyan("-p, -more        "); QCol.Yellow("Turn \"more\" mode on/off. (Read note below)\n");
+                QCol.Cyan("-support         "); QCol.Yellow("Show a list of all supported file formats");
                 QCol.Red("The \"more\" mode!\n");
                 QCol.Yellow("Does not entirely work the same as the 'more' utility, but has the same primary function!\n");
                 QCol.Yellow("When the \"more\" bar appears you can hit space to show the next line, Enter/Return to show the entire next page and escape to turn the more mode off\n");
@@ -83,6 +85,12 @@ namespace Kitty {
                         case "-nolinenumbers": slin = false; break;
                         case "-showlinenumbers":slin = true; break;
                         case "-p": case "-more": KittyHigh.BrkLines = !KittyHigh.BrkLines; break;
+                        case "-support":
+                            foreach (string ext in KittyHigh.Langs.Keys) {
+                                QCol.Cyan(qstr.Left($"{ext}                    ", 20));
+                                QCol.Yellow($"{KittyHigh.Langs[ext].Language}\n");
+                            }
+                            break;
                         default: QCol.QuickError($"Unknown switch: {a}"); break;
                     }
                 } else {

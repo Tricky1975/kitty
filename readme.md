@@ -40,7 +40,7 @@ On the moment this document was updated, the next languages were supported:
 - C/C++ (.c/.cpp/.h/.hpp)
 - C# (.cs)
 - GINI (.gini)
-- Go (.go)
+- [Go](https://golang.org/) (.go)
 - ini/config (.ini)
 - Java (.java)
 - JavaScript (.js)

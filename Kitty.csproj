@@ -72,6 +72,7 @@
     <Compile Include="High\KittyHighCS.cs" />
     <Compile Include="High\KittyHighGINI.cs" />
     <Compile Include="High\KittyHighGo.cs" />
+    <Compile Include="High\KittyHighHtml.cs" />
     <Compile Include="High\KittyHighINI.cs" />
     <Compile Include="High\KittyHighJava.cs" />
     <Compile Include="High\KittyHighJavaScript.cs" />

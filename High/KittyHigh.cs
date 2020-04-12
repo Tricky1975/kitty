@@ -34,6 +34,7 @@ namespace Kitty {
         static public ConsoleColor LineNumbers = ConsoleColor.DarkGray;
         static public ConsoleColor Other = ConsoleColor.Gray;
         static public ConsoleColor Error = ConsoleColor.DarkRed;
+        static public ConsoleColor Attribute = ConsoleColor.Blue;
     }
 
     abstract class KittyHigh {
@@ -227,7 +228,7 @@ namespace Kitty {
         }
     }
 
-
+    // Markup support by freezernick
     class KittyMarkup : KittyHigh
     {
         protected string stringstart = "\"";
@@ -242,12 +243,15 @@ namespace Kitty {
 
         public override void Show(string src, bool linenumbers = false)
         {
+            bool intag = false;
             string word = "";
             void showword()
             {
                 var col = KittyColors.Other;
-                if (word.StartsWith(opentagchar) && (word.EndsWith(endtagchar) || word.EndsWith(closetagchar)))
+                if (word.StartsWith(opentagchar) || word.EndsWith(endtagchar) || word.EndsWith(closetagchar))
                     col = KittyColors.KeyWord;
+                if (intag)
+                    col = KittyColors.Attribute;
                 Console.ForegroundColor = col;
                 Console.Write(word);
             }
@@ -258,6 +262,7 @@ namespace Kitty {
             {
                 if (linenumbers) LineNumber(i + 1);
                 word = "";
+                intag = false;
                 var singstring = false;
                 var stringescape = false;
                 bool wassingstring;
@@ -279,7 +284,7 @@ namespace Kitty {
                             stringescape = ch == escape && !stringescape;
                     }
 
-                    else if (word == "" && ch == '<')
+                    else if (word == "" && ch == '<' && (lines[i][p+1] != '!' && lines[i][p+2] != '-'))
                     {
                         word += $"{ch}";
                         int q = p;
@@ -287,9 +292,13 @@ namespace Kitty {
                         while (inline)
                         {
                             q++;
-                            if (lines[i][q] == ' ' && lines[i][q + 1] != '/')
+                            if(lines[i][q] == '=')
                             {
-                                p = q - 1;
+                                word += lines[i][q];
+                                p = q;
+                                showword();
+                                word = "";
+                                intag = true;
                                 inline = false;
                             }
                             else if (lines[i][q] == '>')
@@ -297,6 +306,47 @@ namespace Kitty {
                                 word += lines[i][q];
                                 p = q;
                                 inline = false;
+                                intag = false;
+                                showword();
+                                word = "";
+                            }
+                            else if(lines[i][q] == ' ')
+                            {
+                                word += lines[i][q];
+                                p = q;
+                                showword();
+                                word = "";
+                                inline = false;
+                                intag = true;
+                            }
+                            else
+                            {
+                                word += lines[i][q];
+                            }
+                        }
+                    }
+                    else if (word == "" && intag && ch != ' ' && ch != '>' && (lines[i][p + 1] != '!' && lines[i][p + 2] != '-'))
+                    {
+                        word += $"{ch}";
+                        int q = p;
+                        bool inline = true;
+                        while (inline)
+                        {
+                            q++;
+                            if (lines[i][q] == '=')
+                            {
+                                word += lines[i][q];
+                                p = q;
+                                showword();
+                                word = "";
+                                inline = false;
+                            }
+                            else if (lines[i][q] == '>')
+                            {
+                                word += lines[i][q];
+                                p = q;
+                                inline = false;
+                                intag = false;
                             }
                             else
                             {
@@ -315,8 +365,3 @@ namespace Kitty {
         }
     }
 }
-
-
-
-
-

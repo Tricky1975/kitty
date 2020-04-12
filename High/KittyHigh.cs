@@ -262,8 +262,31 @@ namespace Kitty {
                 for (int p = 0; p < lines[i].Length; p++)
                 {
                     var ch = lines[i][p];
-                    if ((ch == '<') || (ch == '>') || (ch == '/') || (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || ch == '_' || (ch >= '0' && ch <= '9'))
+                    if(word == "" && ch == '<')
+                    {
                         word += $"{ch}";
+                        int q = p;
+                        bool inline = true;
+                        while(inline)
+                        {
+                            q++;
+                            if (lines[i][q] == ' ' && lines[i][q+1] != '/')
+                            {
+                                p = q - 1;
+                                inline = false;
+                            }
+                            else if(lines[i][q] == '>')
+                            {
+                                word += lines[i][q];
+                                p = q;
+                                inline = false;
+                            }
+                            else
+                            {
+                                word += lines[i][q];   
+                            }
+                        }
+                    }
                     else
                     {
                         if (word != "") showword(); word = $"{ch}"; showword(); word = "";

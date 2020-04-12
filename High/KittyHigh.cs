@@ -233,7 +233,7 @@ namespace Kitty {
         protected string stringstart = "\"";
         protected string stringend = "\"";
         protected bool mulcomment = true;
-        protected string mulcommentstart = "<--";
+        protected string mulcommentstart = "<!--";
         protected string mulcommentend = "-->";
         protected string opentagchar = "<";
         protected string closetagchar = ">";

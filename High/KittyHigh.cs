@@ -258,24 +258,41 @@ namespace Kitty {
             {
                 if (linenumbers) LineNumber(i + 1);
                 word = "";
+                var singstring = false;
+                var stringescape = false;
+                bool wassingstring;
 
                 for (int p = 0; p < lines[i].Length; p++)
                 {
                     var ch = lines[i][p];
-                    if(word == "" && ch == '<')
+
+                    wassingstring = singstring;
+                    singstring = singstring || (p < lines[i].Length - 1 && lines[i].Substring(p, stringstart.Length) == stringstart);
+
+                    if (singstring)
+                    {
+                        Console.ForegroundColor = KittyColors.String;
+                        Console.Write($"{ch}");
+                        if (wassingstring && p < lines[i].Length && lines[i].Substring(p, stringend.Length) == stringend && !stringescape)
+                            singstring = false;
+                        else
+                            stringescape = ch == escape && !stringescape;
+                    }
+
+                    else if (word == "" && ch == '<')
                     {
                         word += $"{ch}";
                         int q = p;
                         bool inline = true;
-                        while(inline)
+                        while (inline)
                         {
                             q++;
-                            if (lines[i][q] == ' ' && lines[i][q+1] != '/')
+                            if (lines[i][q] == ' ' && lines[i][q + 1] != '/')
                             {
                                 p = q - 1;
                                 inline = false;
                             }
-                            else if(lines[i][q] == '>')
+                            else if (lines[i][q] == '>')
                             {
                                 word += lines[i][q];
                                 p = q;
@@ -283,7 +300,7 @@ namespace Kitty {
                             }
                             else
                             {
-                                word += lines[i][q];   
+                                word += lines[i][q];
                             }
                         }
                     }

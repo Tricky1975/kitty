@@ -325,7 +325,7 @@ namespace Kitty {
                             }
                         }
                     }
-                    else if (word == "" && intag && ch != ' ' && ch != '>' && (lines[i][p + 1] != '!' && lines[i][p + 2] != '-'))
+                    else if (word == "" && intag && ch != ' ' && ch != '>' && ch != '/' && (lines[i][p + 1] != '!' && lines[i][p + 2] != '-'))
                     {
                         word += $"{ch}";
                         int q = p;
@@ -356,6 +356,8 @@ namespace Kitty {
                     }
                     else
                     {
+                        if (ch == '>' || ch == '/')
+                            intag = false;
                         if (word != "") showword(); word = $"{ch}"; showword(); word = "";
                     }
                 }

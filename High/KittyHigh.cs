@@ -226,6 +226,54 @@ namespace Kitty {
             }
         }
     }
+
+
+    class KittyMarkup : KittyHigh
+    {
+        protected string stringstart = "\"";
+        protected string stringend = "\"";
+        protected bool mulcomment = true;
+        protected string mulcommentstart = "<--";
+        protected string mulcommentend = "-->";
+        protected string opentagchar = "<";
+        protected string closetagchar = ">";
+        protected string endtagchar = "/>";
+        protected char escape = '\\';
+
+        public override void Show(string src, bool linenumbers = false)
+        {
+            string word = "";
+            void showword()
+            {
+                var col = KittyColors.Other;
+                if (word.StartsWith(opentagchar) && (word.EndsWith(endtagchar) || word.EndsWith(closetagchar)))
+                    col = KittyColors.KeyWord;
+                Console.ForegroundColor = col;
+                Console.Write(word);
+            }
+            src = src.Replace("\r\n", "\n");
+            var lines = src.Split('\n');
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                if (linenumbers) LineNumber(i + 1);
+                word = "";
+
+                for (int p = 0; p < lines[i].Length; p++)
+                {
+                    var ch = lines[i][p];
+                    if ((ch == '<') || (ch == '>') || (ch == '/') || (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || ch == '_' || (ch >= '0' && ch <= '9'))
+                        word += $"{ch}";
+                    else
+                    {
+                        if (word != "") showword(); word = $"{ch}"; showword(); word = "";
+                    }
+                }
+                if (word != "") showword();
+                WriteLine();
+            }
+        }
+    }
 }
 
 

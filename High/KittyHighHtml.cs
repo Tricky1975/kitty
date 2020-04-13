@@ -26,8 +26,8 @@ namespace Kitty
 
         public KittyHighHtml()
         {
-
             Langs["html"] = this;
+            Langs["htm"] = this;
             Language = "HTML";
             stringstart = "\"";
             stringend = "\"";

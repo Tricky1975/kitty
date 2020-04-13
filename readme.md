@@ -41,6 +41,7 @@ On the moment this document was updated, the next languages were supported:
 - C# (.cs)
 - GINI (.gini)
 - [Go](https://golang.org/) (.go)
+- HTML (.html/.htm)
 - ini/config (.ini)
 - Java (.java)
 - JavaScript (.js)

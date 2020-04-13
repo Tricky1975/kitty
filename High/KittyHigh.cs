@@ -257,7 +257,7 @@ namespace Kitty {
             }
             src = src.Replace("\r\n", "\n");
             var lines = src.Split('\n');
-
+            bool mulcomm = false;
             for (int i = 0; i < lines.Length; i++)
             {
                 if (linenumbers) LineNumber(i + 1);
@@ -273,7 +273,7 @@ namespace Kitty {
 
                     wassingstring = singstring;
                     singstring = singstring || (p < lines[i].Length - 1 && lines[i].Substring(p, stringstart.Length) == stringstart);
-
+                    mulcomm = mulcomm || (p < lines[i].Length - 3 && lines[i].Substring(p, mulcommentstart.Length) == mulcommentstart && !singstring && mulcomment);
                     if (singstring)
                     {
                         Console.ForegroundColor = KittyColors.String;
@@ -283,8 +283,19 @@ namespace Kitty {
                         else
                             stringescape = ch == escape && !stringescape;
                     }
-
-                    else if (word == "" && ch == '<' && (lines[i][p+1] != '!' && lines[i][p+2] != '-'))
+                    else if (mulcomm)
+                    {
+                        Console.ForegroundColor = KittyColors.Comment;
+                        Console.Write($"{ch}");
+                        if (p < lines[i].Length - 2 && lines[i].Substring(p, mulcommentend.Length) == mulcommentend)
+                        {
+                            Console.Write($"{lines[i][p + 1]}");
+                            Console.Write($"{lines[i][p + 2]}");
+                            p = p + 2;
+                            mulcomm = false;
+                        }
+                    }
+                    else if (word == "" && ch == '<')
                     {
                         word += $"{ch}";
                         int q = p;
@@ -292,7 +303,7 @@ namespace Kitty {
                         while (inline)
                         {
                             q++;
-                            if(lines[i][q] == '=')
+                            if (lines[i][q] == '=')
                             {
                                 word += lines[i][q];
                                 p = q;
@@ -310,7 +321,7 @@ namespace Kitty {
                                 showword();
                                 word = "";
                             }
-                            else if(lines[i][q] == ' ')
+                            else if (lines[i][q] == ' ')
                             {
                                 word += lines[i][q];
                                 p = q;
@@ -325,7 +336,7 @@ namespace Kitty {
                             }
                         }
                     }
-                    else if (word == "" && intag && ch != ' ' && ch != '>' && ch != '/' && (lines[i][p + 1] != '!' && lines[i][p + 2] != '-'))
+                    else if (word == "" && intag && ch != ' ' && ch != '>' && ch != '/')
                     {
                         word += $"{ch}";
                         int q = p;

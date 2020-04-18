@@ -28,6 +28,9 @@ namespace Kitty
         {
 
             Langs["xml"] = this;
+            Langs["csproj"] = this;
+            Langs["vcxproj"] = this;
+            Langs["xaml"] = this;
             Language = "XML";
             stringstart = "\"";
             stringend = "\"";

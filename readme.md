@@ -33,27 +33,29 @@ mono Kitty.exe "SourceFile.c"
 # Supported Languages
 
 On the moment this document was updated, the next languages were supported:
-- BASIC (GW-BASIC and QBASIC) (.bas)
-- BlitzBasic (and its variants Blitz3D and BlitzPlus) (.bb)
-- BlitzMax (.bmx)
-- Brainfuck (.bf)
-- C/C++ (.c/.cpp/.h/.hpp)
-- C# (.cs)
-- GINI (.gini)
-- [Go](https://golang.org/) (.go)
-- HTML (.html/.htm)
-- ini/config (.ini)
-- Java (.java)
-- JavaScript (.js)
-- JSON (.json)
-- Lua (.lua)
-- [NIL isn't Lua](https://github.com/jpbubble/NIL-isn-t-Lua) (.nil)
-- Pascal (.pas)
-- Python (.py)
-- SAKSIA (.saskia)
-- [Scyndi](https://github.com/Wendicka/Scyndi) (.ssf/.scf)
-- VisualBasic (.vb)
-- Whitespace (.ws)
-- XML (.xml)
+Extension | Language | Added by: | Notes:
+---|---|---|---
+bas | BASIC/GW-BASIC/QBASIC | Jeroen P. Broks | Please note that due to the many variants of this language the highlight can sometimes be faulty.
+bb | BlitzBasic | Jeroen P. Broks | This includes its variants Blitz3D and BlitzPlus
+bmx | BlitzMax | Jeroen P. Broks 
+bf | Brainfuck | Jeroen P.Broks | Esolang
+c/cpp/h/hpp | C/C++ | Jeroen P. Broks
+cs | C# | Jeroen P. Broks
+gini | GINI | Jeroen P. Broks
+go | [Go](https://golang.org/) | Jeroen P. Broks
+html/htm | HTML | Freezernick
+ini | ini/config | Jeroen P. Broks
+java | Java | Jeroen P. Broks
+js | JavaScript | Jeroen P. Broks
+json | JSON | Jeroen P. Broks
+lua | Lua | Jeroen P. Broks
+nil | [NIL isn't Lua](https://github.com/jpbubble/NIL-isn-t-Lua) | Jeroen P. Broks
+pas | Pascal | Jeroen P. Broks
+py | Python | Jeroen P. Broks
+saskia | SAKSIA | Jeroen P. Broks
+scf/ssf | [Scyndi prototype](https://github.com/Wendicka/Scyndi) | Jeroen P. Broks | This language will be entirely revised and then this format may get deprecated!
+vb | VisualBasic | Freezernick
+ws | Whitespace | Jeroen P. Broks | Depending on the used console software, this may not work on your system or not well. 
+xml | XML | Freezernick | This also triggers C# and Visual C++ projects and XAML files
 
 More might be added later, but no promises yet ;)

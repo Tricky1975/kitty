@@ -54,5 +54,6 @@ On the moment this document was updated, the next languages were supported:
 - [Scyndi](https://github.com/Wendicka/Scyndi) (.ssf/.scf)
 - VisualBasic (.vb)
 - Whitespace (.ws)
+- XML (.xml)
 
 More might be added later, but no promises yet ;)

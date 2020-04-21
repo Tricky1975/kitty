@@ -60,6 +60,9 @@
     <Compile Include="..\TrickyUnits\QuickConsoleColors.cs">
       <Link>TrickyUnits\QuickConsoleColors.cs</Link>
     </Compile>
+    <Compile Include="..\TrickyUnits\RegExTree.cs">
+      <Link>TrickyUnits\RegExTree.cs</Link>
+    </Compile>
     <Compile Include="..\TrickyUnits\TrickyDbg.cs">
       <Link>TrickyUnits\TrickyDbg.cs</Link>
     </Compile>

@@ -71,22 +71,48 @@ namespace Kitty {
                 QCol.Cyan("-ln              "); QCol.Yellow("Toggle line numbers on/off (default is on)\n");
                 QCol.Cyan("-nolinenumbers   "); QCol.Yellow("Turn line numbers off\n");
                 QCol.Cyan("-Showlinenumbers "); QCol.Yellow("Turn line numbers on\n");
+                QCol.Cyan("-re              "); QCol.Yellow("Toggle searching by RegEx (this allows limited support for Wild Cards and more nice things)\n");
                 QCol.Cyan("-p, -more        "); QCol.Yellow("Turn \"more\" mode on/off. (Read note below)\n");
-                QCol.Cyan("-support         "); QCol.Yellow("Show a list of all supported file formats");
-                QCol.Red("The \"more\" mode!\n");
+                QCol.Cyan("-support         "); QCol.Yellow("Show a list of all supported file formats\n");
+                QCol.Red("\n\nThe \"more\" mode!\n");
                 QCol.Yellow("Does not entirely work the same as the 'more' utility, but has the same primary function!\n");
                 QCol.Yellow("When the \"more\" bar appears you can hit space to show the next line, Enter/Return to show the entire next page and escape to turn the more mode off\n");
                 QCol.White("\n\nKitty can be used as as CLI tool, but the integry has been made to be included in your own projects, and has been released under the terms of the zlib license\n\n");
                 return;
             }
             // Go for it
+            QCol.Doing("Called from:", System.IO.Directory.GetCurrentDirectory());
+            void ViewFile(string a) {
+                try {
+                    var arg = Dirry.AD(a).Replace("\\", "/");
+                    QCol.Doing("Reading", arg); KittyHigh.PageBreak();
+                    var src = QuickStream.LoadString(arg);
+                    var eoln = qstr.EOLNType(arg);
+                    // QCol.Doing("EOLN", eoln); // didn't work anyway
+                    //QCol.OriCol();
+                    var ext = qstr.ExtractExt(arg).ToLower();
+                    KittyHigh Viewer = KittyHigh.Langs["OTHER"];
+                    if (KittyHigh.Langs.ContainsKey(ext)) Viewer = KittyHigh.Langs[ext];
+                    QCol.Doing("Type", Viewer.Language); KittyHigh.PageBreak();
+                    KittyHigh.WriteLine();
+                    Viewer.Show(src, slin);
+
+                } catch (Exception ex) {
+                    QCol.QuickError($"{ex.Message}\n");
+#if DEBUG
+                    QCol.Magenta($"{ex.StackTrace}\n\n");
+#endif
+                }
+            }
+            var aregex = false;
             foreach (string a in args) {
                 if (qstr.Prefixed(a, "-")) {
                     switch (a.ToLower()) {
                         case "-ln": slin = !slin; break;
                         case "-nolinenumbers": slin = false; break;
-                        case "-showlinenumbers":slin = true; break;
+                        case "-showlinenumbers": slin = true; break;
                         case "-p": case "-more": KittyHigh.BrkLines = !KittyHigh.BrkLines; break;
+                        case "-re": aregex = !aregex; break;
                         case "-support":
                             foreach (string ext in KittyHigh.Langs.Keys) {
                                 QCol.Cyan(qstr.Left($"{ext}                    ", 20));
@@ -95,30 +121,19 @@ namespace Kitty {
                             break;
                         default: QCol.QuickError($"Unknown switch: {a}"); break;
                     }
+                } else if (aregex) {
+                    QCol.Doing("Searching for RegEx", a);
+                    var rgxl = RegExTree.Tree(a);
+                    foreach (string af in rgxl) ViewFile(af);
                 } else {
-                    try {
-                        var arg = Dirry.AD(a).Replace("\\", "/");
-                        QCol.Doing("Reading", arg); KittyHigh.PageBreak();
-                        var src = QuickStream.LoadString(arg);
-                        var eoln = qstr.EOLNType(arg);
-                        // QCol.Doing("EOLN", eoln); // didn't work anyway
-                        //QCol.OriCol();
-                        var ext = qstr.ExtractExt(arg).ToLower();
-                        KittyHigh Viewer = KittyHigh.Langs["OTHER"];
-                        if (KittyHigh.Langs.ContainsKey(ext)) Viewer = KittyHigh.Langs[ext];
-                        QCol.Doing("Type", Viewer.Language); KittyHigh.PageBreak();
-                        KittyHigh.WriteLine();
-                        Viewer.Show(src, slin);
-
-                    } catch (Exception ex) {
-                        QCol.QuickError($"{ex.Message}\n");
-#if DEBUG
-                        QCol.Magenta($"{ex.StackTrace}\n\n");
-#endif
-                    }
+                    ViewFile(a);
                 }
             }
             TrickyDebug.AttachWait();
         }
+
     }
+
 }
+    
+

@@ -2,7 +2,7 @@
 // High/KittyHigh.cs
 // Kitty
 // version: 20.05.31
-// Copyright (C) 2019 Jeroen P. Broks
+// Copyright (C) 2019, 2020 Jeroen P. Broks
 // This software is provided 'as-is', without any express or implied
 // warranty.  In no event will the authors be held liable for any damages
 // arising from the use of this software.
@@ -48,7 +48,7 @@ namespace Kitty {
         public void WriteLine(object a) => WriteLine($"{a}");
         public ConsoleColor ForegroundColor = ConsoleColor.Gray;
         public ConsoleColor BackgroundColor = ConsoleColor.Black;
-        public int WindowHeight = Console.WindowHeight;
+        public int WindowHeight = 25; 
     }
 
     class KittyCLI:KittyOutput {
@@ -58,11 +58,14 @@ namespace Kitty {
             Console.Write(a);
         }
         public override void WriteLine(string a) => Console.Write($"{a}\n");
+        public KittyCLI() {
+            WindowHeight = Console.WindowHeight;
+        }
     }
 
     abstract class KittyHigh {
         static readonly public SortedDictionary<string, KittyHigh> Langs = new SortedDictionary<string, KittyHigh>();
-        static readonly public int NumLines = Console.WindowHeight;
+        static public int NumLines => _ko.WindowHeight;
         static public int PagLines = 0;
         static public bool BrkLines = false;
         static KittyOutput _ko = null;
@@ -71,7 +74,10 @@ namespace Kitty {
                 if (_ko == null) _ko = new KittyCLI();
                 return _ko;
             }
-            set { _ko = value; }
+            set {
+                System.Diagnostics.Debug.WriteLine("New Console For KittyHigh set");
+                _ko = value;
+            }
         }
 
         static public void PageBreak() {

@@ -35,6 +35,7 @@ namespace Kitty {
             KeyWords.Add("int");
             KeyWords.Add("quickmeta");
             KeyWords.Add("bool");
+            KeyWords.Add("var");
             KeyWords.Add("switch");
             KeyWords.Add("case");
             KeyWords.Add("default");

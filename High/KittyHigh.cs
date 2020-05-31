@@ -1,8 +1,8 @@
 // Lic:
 // High/KittyHigh.cs
 // Kitty
-// version: 20.04.13
-// Copyright (C)  Jeroen P. Broks
+// version: 20.05.31
+// Copyright (C) 2019 Jeroen P. Broks
 // This software is provided 'as-is', without any express or implied
 // warranty.  In no event will the authors be held liable for any damages
 // arising from the use of this software.
@@ -37,11 +37,42 @@ namespace Kitty {
         static public ConsoleColor Attribute = ConsoleColor.Blue;
     }
 
+    abstract class KittyOutput {
+        abstract public void Write(string a);
+        abstract public void WriteLine(string a);
+        public void WriteLine() => WriteLine("");
+        public ConsoleKeyInfo ReadKey() => Console.ReadKey();
+        public ConsoleKeyInfo ReadKey(bool b) => Console.ReadKey(b);
+        public void ResetColor() { ForegroundColor = ConsoleColor.Gray; BackgroundColor = ConsoleColor.Black; }
+        public void Write(object a) => Write($"{a}");
+        public void WriteLine(object a) => WriteLine($"{a}");
+        public ConsoleColor ForegroundColor = ConsoleColor.Gray;
+        public ConsoleColor BackgroundColor = ConsoleColor.Black;
+        public int WindowHeight = Console.WindowHeight;
+    }
+
+    class KittyCLI:KittyOutput {
+        public override void Write(string a) {
+            Console.ForegroundColor = ForegroundColor;
+            Console.BackgroundColor = BackgroundColor;
+            Console.Write(a);
+        }
+        public override void WriteLine(string a) => Console.Write($"{a}\n");
+    }
+
     abstract class KittyHigh {
         static readonly public SortedDictionary<string, KittyHigh> Langs = new SortedDictionary<string, KittyHigh>();
         static readonly public int NumLines = Console.WindowHeight;
         static public int PagLines = 0;
         static public bool BrkLines = false;
+        static KittyOutput _ko = null;
+        static public KittyOutput Console {
+            get {
+                if (_ko == null) _ko = new KittyCLI();
+                return _ko;
+            }
+            set { _ko = value; }
+        }
 
         static public void PageBreak() {
             if (!BrkLines) return;

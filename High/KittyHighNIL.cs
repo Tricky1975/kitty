@@ -1,8 +1,8 @@
 // Lic:
 // High/KittyHighNIL.cs
 // Kitty
-// version: 19.10.08
-// Copyright (C)  Jeroen P. Broks
+// version: 20.06.02
+// Copyright (C) 2019 Jeroen P. Broks
 // This software is provided 'as-is', without any express or implied
 // warranty.  In no event will the authors be held liable for any damages
 // arising from the use of this software.
@@ -29,6 +29,8 @@ namespace Kitty {
             KeyWords.Add("global");
             KeyWords.Add("private");
             KeyWords.Add("end");
+            KeyWords.Add("and");
+            KeyWords.Add("or");
             KeyWords.Add("table");
             KeyWords.Add("void");
             KeyWords.Add("string");
@@ -107,6 +109,3 @@ namespace Kitty {
 
     }
 }
-
-
-

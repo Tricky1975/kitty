@@ -1,7 +1,7 @@
 // Lic:
 // High/KittyHigh.cs
 // Kitty
-// version: 20.05.31
+// version: 20.06.02
 // Copyright (C) 2019, 2020 Jeroen P. Broks
 // This software is provided 'as-is', without any express or implied
 // warranty.  In no event will the authors be held liable for any damages
@@ -150,10 +150,11 @@ namespace Kitty {
         protected bool mulcommentfullline = false; // Needed for BlitzMax where commands taking up a full line are used for multi line comments. This is not entirely fool-proof, but it'll have to do.
         protected bool caseinsensitive = false;
         protected bool supcom = true;
-        
+
 
         public override void Show(string src, bool linenumbers = false) {
             string word = "";
+            var mle = 0;
             void showword() {
                 var col = KittyColors.Other;
                 if (KeyWords.Contains(word) || (caseinsensitive && KeyWords.Contains(word.ToLower())))
@@ -213,7 +214,7 @@ namespace Kitty {
                 if (linenumbers) LineNumber(i + 1);
                 word = "";
                 var singcomm = false;
-                var singstring = false;                
+                var singstring = false;
                 var stringescape = false;
                 var wassingstring = false;
                 for (int p = 0; p < lines[i].Length; p++) {
@@ -221,19 +222,25 @@ namespace Kitty {
                     // Console.WriteLine($"DEBUG! {lines[i].Substring(p, singcomment.Length)} {singcomment}");
                     wassingstring = singstring;
                     singcomm = singcomm || (p < lines[i].Length - 1 && lines[i].Substring(p, singcomment.Length) == singcomment && (!singstring) && (!mulcomm) && supcom);
-                    mulcomm = mulcomm || (p < lines[i].Length - 1 && lines[i].Substring(p, mulcommentstart.Length) == mulcommentstart && (!singstring) & (!singcomm) && mulcomment);
+                    try {
+                        mulcomm = mulcomm || (p < lines[i].Length - 1 && lines[i].Substring(p, Math.Min(lines[i].Length-p, mulcommentstart.Length)) == mulcommentstart && (!singstring) & (!singcomm) && mulcomment);
+                    } catch (Exception e) {
+                        System.Diagnostics.Debug.WriteLine($"Error: {e.Message} (parsing line {i+1}/{lines.Length}; pos {p})");
+                        System.Console.Beep(); mle++;
+                        //mulcomm = false;
+                    }
                     singstring = singstring || (p < lines[i].Length - 1 && lines[i].Substring(p, stringstart.Length) == stringstart && (!singcomm) && (!mulcomm));
                     if (singstring) {
                         Console.ForegroundColor = KittyColors.String;
                         Console.Write($"{ch}");
-                        if (wassingstring && p < lines[i].Length  && lines[i].Substring(p, stringend.Length) == stringend && !stringescape)
+                        if (wassingstring && p < lines[i].Length && lines[i].Substring(p, stringend.Length) == stringend && !stringescape)
                             singstring = false;
                         else
                             stringescape = ch == escape && !stringescape;
                     } else if (mulcomm) {
                         Console.ForegroundColor = KittyColors.Comment;
                         Console.Write($"{ch}");
-                        if (p < lines[i].Length- (mulcommentend.Length-1) && lines[i].Substring(p, mulcommentend.Length) == mulcommentend)
+                        if (p < lines[i].Length - (mulcommentend.Length - 1) && lines[i].Substring(p, mulcommentend.Length) == mulcommentend)
                             mulcomm = false;
                     } else if (singcomm) {
                         Console.ForegroundColor = KittyColors.Comment;
@@ -249,7 +256,7 @@ namespace Kitty {
                 if (word != "") showword();
                 WriteLine();
             }
-
+            if (mle > 0) System.Diagnostics.Debug.WriteLine($"Number of errors on multi-line-comments: {mle}");
         }
     }
 

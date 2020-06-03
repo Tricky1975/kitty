@@ -1,7 +1,7 @@
 // Lic:
 // High/KittyHigh.cs
 // Kitty
-// version: 20.06.02
+// version: 20.06.03
 // Copyright (C) 2019, 2020 Jeroen P. Broks
 // This software is provided 'as-is', without any express or implied
 // warranty.  In no event will the authors be held liable for any damages
@@ -65,10 +65,10 @@ namespace Kitty {
 
     abstract class KittyHigh {
         static readonly public SortedDictionary<string, KittyHigh> Langs = new SortedDictionary<string, KittyHigh>();
-        static public int NumLines => _ko.WindowHeight;
+        static KittyOutput _ko = null;
+        static public int NumLines => Console.WindowHeight;
         static public int PagLines = 0;
         static public bool BrkLines = false;
-        static KittyOutput _ko = null;
         static public KittyOutput Console {
             get {
                 if (_ko == null) _ko = new KittyCLI();

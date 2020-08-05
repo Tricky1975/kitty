@@ -55,6 +55,14 @@ namespace Kitty {
             KeyWords.Add("nil");
             KeyWords.Add("extends");
 
+            KeyWords.Add("repeat");
+            KeyWords.Add("until");
+            KeyWords.Add("loopwhile");
+            KeyWords.Add("init");
+            KeyWords.Add("cfor");
+            KeyWords.Add("pairs");
+            KeyWords.Add("ipairs");
+
             KeyWords.Add("constructor");
             KeyWords.Add("destructor");
             KeyWords.Add("infinity");

@@ -62,6 +62,7 @@ namespace Kitty {
             KeyWords.Add("cfor");
             KeyWords.Add("pairs");
             KeyWords.Add("ipairs");
+            KeyWords.Add("with");
 
             KeyWords.Add("constructor");
             KeyWords.Add("destructor");

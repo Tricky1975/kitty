@@ -52,6 +52,13 @@ namespace Kitty {
             KeyWords.Add("import");
             KeyWords.Add("return");
             KeyWords.Add("var");
+
+            BaseTypes.Add("string");
+            BaseTypes.Add("int");
+            BaseTypes.Add("int32");
+            BaseTypes.Add("int64");
+            BaseTypes.Add("map");
+            BaseTypes.Add("array");
         }
 
     }

@@ -142,6 +142,14 @@ namespace Kitty {
 
             KeyWords.Add("far");
             KeyWords.Add("near");
+
+            BaseTypes.Add("integer");
+            BaseTypes.Add("word");
+            BaseTypes.Add("shortint");
+            BaseTypes.Add("byte");
+            BaseTypes.Add("char");
+            BaseTypes.Add("string");
+
         }
 
     }

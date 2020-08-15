@@ -35,6 +35,7 @@ namespace Kitty {
         static public ConsoleColor Other = ConsoleColor.Gray;
         static public ConsoleColor Error = ConsoleColor.DarkRed;
         static public ConsoleColor Attribute = ConsoleColor.Blue;
+        static public ConsoleColor BaseType = ConsoleColor.Magenta;
     }
 
     abstract class KittyOutput {
@@ -136,6 +137,7 @@ namespace Kitty {
 
     class KittyPL : KittyHigh {
         protected List<string> KeyWords= new List<string>();
+        protected List<string> BaseTypes = new List<string>();
         protected string stringstart = "\"";
         protected string stringend = "\"";
         protected string mlstringstart = "@\"";
@@ -159,7 +161,9 @@ namespace Kitty {
                 var col = KittyColors.Other;
                 if (KeyWords.Contains(word) || (caseinsensitive && KeyWords.Contains(word.ToLower())))
                     col = KittyColors.KeyWord;
-                else {
+                else if (BaseTypes.Contains(word) || (caseinsensitive && BaseTypes.Contains(word.ToLower())))
+                    col = KittyColors.BaseType;
+                else {                  
                     switch (word.Substring(0, 1).ToUpper()) { // Not the most elegant method, but what works, that works!
                         case "A":
                         case "B":

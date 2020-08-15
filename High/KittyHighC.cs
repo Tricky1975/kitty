@@ -27,15 +27,18 @@ namespace Kitty {
             Langs["h"] = this;
             Langs["hpp"] = this;
             Language = "C/C++";
+            BaseTypes.Add("void");
+            BaseTypes.Add("bool");
+            BaseTypes.Add("auto");
+            BaseTypes.Add("char");
+            BaseTypes.Add("int");
             KeyWords.Add("asm");
             KeyWords.Add("else");
             KeyWords.Add("new");
             KeyWords.Add("this");
-            KeyWords.Add("auto");
             KeyWords.Add("enum");
             KeyWords.Add("operator");
             KeyWords.Add("throw");
-            KeyWords.Add("bool");
             KeyWords.Add("explicit");
             KeyWords.Add("private");
             KeyWords.Add("true");
@@ -51,7 +54,6 @@ namespace Kitty {
             KeyWords.Add("false");
             KeyWords.Add("register");
             KeyWords.Add("typeid");
-            KeyWords.Add("char");
             KeyWords.Add("float");
             KeyWords.Add("reinterpret_cast");
             KeyWords.Add("typename");
@@ -74,9 +76,7 @@ namespace Kitty {
             KeyWords.Add("default");
             KeyWords.Add("inline");
             KeyWords.Add("static");
-            KeyWords.Add("void");
             KeyWords.Add("delete");
-            KeyWords.Add("int");
             KeyWords.Add("static_cast");
             KeyWords.Add("volatile");
             KeyWords.Add("do");

@@ -22,6 +22,12 @@ namespace Kitty {
     class KittyHighNIL : KittyPL {
         public KittyHighNIL() {
             // Not complete yet, but for now this will do!
+            BaseTypes.Add("table");
+            BaseTypes.Add("void");
+            BaseTypes.Add("string");
+            BaseTypes.Add("int");
+            BaseTypes.Add("bool");
+            BaseTypes.Add("var");
             KeyWords.Add("not");
             KeyWords.Add("class");
             KeyWords.Add("group");
@@ -31,13 +37,7 @@ namespace Kitty {
             KeyWords.Add("end");
             KeyWords.Add("and");
             KeyWords.Add("or");
-            KeyWords.Add("table");
-            KeyWords.Add("void");
-            KeyWords.Add("string");
-            KeyWords.Add("int");
             KeyWords.Add("quickmeta");
-            KeyWords.Add("bool");
-            KeyWords.Add("var");
             KeyWords.Add("switch");
             KeyWords.Add("case");
             KeyWords.Add("default");

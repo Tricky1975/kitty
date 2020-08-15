@@ -8,6 +8,13 @@ namespace Kitty {
     class KittyHighNeil : KittyPL {
         public KittyHighNeil() {
             caseinsensitive = true;
+            // Base Types
+            BaseTypes.Add("void");
+            BaseTypes.Add("string");
+            BaseTypes.Add("int");
+            BaseTypes.Add("bool");
+            BaseTypes.Add("var");
+            BaseTypes.Add("plua");
             // Not complete yet, but for now this will do!
             KeyWords.Add("not");
             KeyWords.Add("class");
@@ -19,12 +26,7 @@ namespace Kitty {
             KeyWords.Add("and");
             KeyWords.Add("or");
             KeyWords.Add("table");
-            KeyWords.Add("void");
-            KeyWords.Add("string");
-            KeyWords.Add("int");
             KeyWords.Add("quickmeta");
-            KeyWords.Add("bool");
-            KeyWords.Add("var");
             KeyWords.Add("switch");
             KeyWords.Add("case");
             KeyWords.Add("default");

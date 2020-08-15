@@ -30,6 +30,11 @@ namespace Kitty {
             escape = '\0';
             mulcomment = false;
 
+            BaseTypes.Add("string");
+            BaseTypes.Add("int");
+            BaseTypes.Add("byte"); // ?
+            BaseTypes.Add("long");
+
             //KeyWords.Add("import");
             //KeyWords.Add("module");
             KeyWords.Add("type");
@@ -39,10 +44,6 @@ namespace Kitty {
             //KeyWords.Add("extends");
             KeyWords.Add("method"); // ?
             KeyWords.Add("function");
-            KeyWords.Add("string");
-            KeyWords.Add("int");
-            KeyWords.Add("byte"); // ?
-            KeyWords.Add("long");
             KeyWords.Add("select");
             KeyWords.Add("case");
             KeyWords.Add("default");

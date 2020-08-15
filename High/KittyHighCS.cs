@@ -23,7 +23,13 @@ namespace Kitty {
 
         public KittyHighCS() {
             // Not complete yet, but for now this will do!
-            KeyWords.Add("using");
+            BaseTypes.Add("void");
+            BaseTypes.Add("int");
+            BaseTypes.Add("using");
+            BaseTypes.Add("char");
+            BaseTypes.Add("bool");
+            BaseTypes.Add("delegate");
+            BaseTypes.Add("long");
             KeyWords.Add("namespace");
             KeyWords.Add("class");
             KeyWords.Add("struct");
@@ -31,11 +37,7 @@ namespace Kitty {
             KeyWords.Add("private");
             KeyWords.Add("protected");
             KeyWords.Add("internal");            
-            KeyWords.Add("void");
             KeyWords.Add("string");
-            KeyWords.Add("int");
-            KeyWords.Add("char");
-            KeyWords.Add("bool");
             KeyWords.Add("switch");
             KeyWords.Add("case");
             KeyWords.Add("default");
@@ -59,7 +61,6 @@ namespace Kitty {
             KeyWords.Add("for");
             KeyWords.Add("in");
             KeyWords.Add("foreach");
-            KeyWords.Add("delegate");
             KeyWords.Add("readonly");
             KeyWords.Add("new");
             KeyWords.Add("break");

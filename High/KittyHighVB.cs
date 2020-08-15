@@ -35,9 +35,7 @@ namespace Kitty {
             KeyWords.Add("and");
             KeyWords.Add("andalso");
             KeyWords.Add("as");
-            KeyWords.Add("boolean");
             KeyWords.Add("byref");
-            KeyWords.Add("byte");
             KeyWords.Add("byval");
             KeyWords.Add("call");
             KeyWords.Add("case");
@@ -48,7 +46,6 @@ namespace Kitty {
             KeyWords.Add("cdate");
             KeyWords.Add("cdbl");
             KeyWords.Add("cdec");
-            KeyWords.Add("char");
             KeyWords.Add("cint");
             KeyWords.Add("class");
             KeyWords.Add("clng");
@@ -63,15 +60,12 @@ namespace Kitty {
             KeyWords.Add("cuint");
             KeyWords.Add("culng");
             KeyWords.Add("cushort");
-            KeyWords.Add("date");
-            KeyWords.Add("decimal");
             KeyWords.Add("declare");
             KeyWords.Add("default");
             KeyWords.Add("delegate");
             KeyWords.Add("dim");
             KeyWords.Add("directcast");
             KeyWords.Add("do");
-            KeyWords.Add("double");
             KeyWords.Add("each");
             KeyWords.Add("else");
             KeyWords.Add("elseif");
@@ -97,14 +91,12 @@ namespace Kitty {
             KeyWords.Add("imports");
             KeyWords.Add("in");
             KeyWords.Add("inherits");
-            KeyWords.Add("integer");
             KeyWords.Add("interface");
             KeyWords.Add("is");
             KeyWords.Add("isnot");
             KeyWords.Add("let");
             KeyWords.Add("lib");
             KeyWords.Add("like");
-            KeyWords.Add("long");
             KeyWords.Add("loop");
             KeyWords.Add("me");
             KeyWords.Add("mod");
@@ -122,7 +114,6 @@ namespace Kitty {
             KeyWords.Add("nothing");
             KeyWords.Add("noninheritable");
             KeyWords.Add("notoverridable");
-            KeyWords.Add("object");
             KeyWords.Add("of");
             KeyWords.Add("on");
             KeyWords.Add("operator");
@@ -147,17 +138,13 @@ namespace Kitty {
             KeyWords.Add("removehandler");
             KeyWords.Add("resume");
             KeyWords.Add("return");
-            KeyWords.Add("sbyte");
             KeyWords.Add("select");
             KeyWords.Add("set");
             KeyWords.Add("shadows");
             KeyWords.Add("shared");
-            KeyWords.Add("short");
-            KeyWords.Add("single");
             KeyWords.Add("static");
             KeyWords.Add("step");
             KeyWords.Add("stop");
-            KeyWords.Add("string");
             KeyWords.Add("structure constraint");
             KeyWords.Add("sub");
             KeyWords.Add("synclock");
@@ -168,9 +155,6 @@ namespace Kitty {
             KeyWords.Add("try");
             KeyWords.Add("trycast");
             KeyWords.Add("typeof");
-            KeyWords.Add("uinteger");
-            KeyWords.Add("ulong");
-            KeyWords.Add("ushort");
             KeyWords.Add("using");
             KeyWords.Add("when");
             KeyWords.Add("while");
@@ -217,7 +201,23 @@ namespace Kitty {
             KeyWords.Add("where");
             KeyWords.Add("yield");
 
-            // Region & External Source
+            // Base Types
+            BaseTypes.Add("boolean");
+            BaseTypes.Add("byte");
+            BaseTypes.Add("char");
+            BaseTypes.Add("date");
+            BaseTypes.Add("decimal");
+            BaseTypes.Add("double");
+            BaseTypes.Add("integer");
+            BaseTypes.Add("long");
+            BaseTypes.Add("object");
+            BaseTypes.Add("sbyte");
+            BaseTypes.Add("short");
+            BaseTypes.Add("single");
+            BaseTypes.Add("string");
+            BaseTypes.Add("uinteger");
+            BaseTypes.Add("ulong");
+            BaseTypes.Add("ushort");
         }
 
     }

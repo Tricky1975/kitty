@@ -63,10 +63,15 @@ namespace Kitty {
             KeyWords.Add("pairs");
             KeyWords.Add("ipairs");
             KeyWords.Add("with");
+            KeyWords.Add("const");
 
             KeyWords.Add("constructor");
             KeyWords.Add("destructor");
             KeyWords.Add("infinity");
+            KeyWords.Add("defer");
+
+            KeyWords.Add("import");
+            KeyWords.Add("export");
 
             //KeyWords.Add("foreach");
             Langs["neil"] = this;

@@ -35,4 +35,17 @@ namespace Kitty
         }
 
     }
+
+    class KittyHighSS : KittyHighHtml
+    {
+
+        public KittyHighSS()
+        {
+            Langs["ss"] = this;
+            Language = "SilverStripe Template";
+            stringstart = "\"";
+            stringend = "\"";
+        }
+
+    }
 }

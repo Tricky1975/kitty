@@ -413,9 +413,17 @@ namespace Kitty {
                             }
                         }
                     }
+                    else if (word == "" && intag && ch == '/' && lines[i][p + 1] == '>')
+                    {
+                        p += 1;
+                        word = "/>";
+                        intag = false;
+                        showword();
+                        word = "";
+                    }
                     else
                     {
-                        if (ch == '>' || ch == '/')
+                        if (ch == '>')
                             intag = false;
                         if (word != "") showword(); word = $"{ch}"; showword(); word = "";
                     }

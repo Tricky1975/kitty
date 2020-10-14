@@ -27,7 +27,7 @@ Now Kitty has NO built-in support for wild cards, which can be a bit of a bummer
 Kitty has been coded in C#, and therefore uses the .NET Framework. When you use programs like Mono, Kitty should work
 ~~~shell
 mono Kitty.exe "SourceFile.c"
-# Of course that is if Kitty.exe is in a directory Mono can fine XD
+# Of course that is if Kitty.exe is in a directory Mono can find XD
 ~~~
 
 # Supported Languages
@@ -50,6 +50,7 @@ js | JavaScript | Jeroen P. Broks
 json | JSON | Jeroen P. Broks
 lua | Lua | Jeroen P. Broks
 nil | [NIL isn't Lua](https://github.com/jpbubble/NIL-isn-t-Lua) | Jeroen P. Broks
+neil | Neil | Jeroen P. Broks
 pas | Pascal | Jeroen P. Broks
 py | Python | Jeroen P. Broks
 saskia | SAKSIA | Jeroen P. Broks

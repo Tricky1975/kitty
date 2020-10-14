@@ -287,6 +287,8 @@ namespace Kitty {
     {
         protected string stringstart = "\"";
         protected string stringend = "\"";
+        protected string astringstart = "'";
+        protected string astringend = "'";
         protected bool mulcomment = true;
         protected string mulcommentstart = "<!--";
         protected string mulcommentend = "-->";
@@ -320,20 +322,25 @@ namespace Kitty {
                 var singstring = false;
                 var stringescape = false;
                 bool wassingstring;
-
+                bool wassingstring2;
+                bool secondstring = false;
                 for (int p = 0; p < lines[i].Length; p++)
                 {
                     var ch = lines[i][p];
 
                     wassingstring = singstring;
+                    wassingstring2 = secondstring;
                     singstring = singstring || (p < lines[i].Length - 1 && lines[i].Substring(p, stringstart.Length) == stringstart);
                     mulcomm = mulcomm || (p < lines[i].Length - 3 && lines[i].Substring(p, mulcommentstart.Length) == mulcommentstart && !singstring && mulcomment);
-                    if (singstring)
+                    secondstring = secondstring || (p < lines[i].Length - 1 && lines[i].Substring(p, astringstart.Length) == astringstart && (!mulcomm));
+                    if (singstring || secondstring)
                     {
                         Console.ForegroundColor = KittyColors.String;
                         Console.Write($"{ch}");
                         if (wassingstring && p < lines[i].Length && lines[i].Substring(p, stringend.Length) == stringend && !stringescape)
                             singstring = false;
+                        else if (wassingstring2 && p < lines[i].Length && lines[i].Substring(p, astringend.Length) == astringend && !stringescape)
+                            secondstring = false;
                         else
                             stringescape = ch == escape && !stringescape;
                     }

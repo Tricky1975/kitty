@@ -219,12 +219,15 @@ namespace Kitty {
                 word = "";
                 var singcomm = false;
                 var singstring = false;
+                var secondstring = false;
                 var stringescape = false;
                 var wassingstring = false;
+                var wassingstring2 = false;
                 for (int p = 0; p < lines[i].Length; p++) {
                     var ch = lines[i][p];
                     // Console.WriteLine($"DEBUG! {lines[i].Substring(p, singcomment.Length)} {singcomment}");
                     wassingstring = singstring;
+                    wassingstring2 = secondstring;
                     singcomm = singcomm || (p < lines[i].Length - 1 && lines[i].Substring(p, singcomment.Length) == singcomment && (!singstring) && (!mulcomm) && supcom);
                     try {
                         mulcomm = mulcomm || (p < lines[i].Length - 1 && lines[i].Substring(p, Math.Min(lines[i].Length-p, mulcommentstart.Length)) == mulcommentstart && (!singstring) & (!singcomm) && mulcomment);
@@ -234,11 +237,14 @@ namespace Kitty {
                         //mulcomm = false;
                     }
                     singstring = singstring || (p < lines[i].Length - 1 && lines[i].Substring(p, stringstart.Length) == stringstart && (!singcomm) && (!mulcomm));
-                    if (singstring) {
+                    secondstring = secondstring || (p < lines[i].Length - 1 && lines[i].Substring(p, astringstart.Length) == astringstart && (!singcomm) && (!mulcomm));
+                    if (singstring || secondstring) {
                         Console.ForegroundColor = KittyColors.String;
                         Console.Write($"{ch}");
                         if (wassingstring && p < lines[i].Length && lines[i].Substring(p, stringend.Length) == stringend && !stringescape)
                             singstring = false;
+                        else if (wassingstring && p < lines[i].Length && lines[i].Substring(p, astringend.Length) == astringend && !stringescape)
+                            secondstring = false;
                         else
                             stringescape = ch == escape && !stringescape;
                     } else if (mulcomm) {

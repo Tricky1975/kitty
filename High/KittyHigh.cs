@@ -65,6 +65,18 @@ namespace Kitty {
     }
 
     abstract class KittyHigh {
+        protected struct StringDelimiterPair
+        {
+            public string Start;
+            public string End;
+
+            public StringDelimiterPair(string start, string end)
+            {
+                Start = start;
+                End = end;
+            }
+        }
+
         static readonly public SortedDictionary<string, KittyHigh> Langs = new SortedDictionary<string, KittyHigh>();
         static KittyOutput _ko = null;
         static public int NumLines => Console.WindowHeight;

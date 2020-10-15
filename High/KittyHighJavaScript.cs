@@ -92,6 +92,8 @@ namespace Kitty {
             Language = "JavaScript";
             Langs["js"] = this;
             new KittyHighJSON();
+            StringDelimiters.Add(new StringDelimiterPair("\"", "\""));
+            StringDelimiters.Add(new StringDelimiterPair("'", "'"));
         }
     }
 

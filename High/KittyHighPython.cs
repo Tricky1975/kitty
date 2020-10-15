@@ -59,6 +59,8 @@ namespace Kitty {
             singcomment = "#";
             Language = "Python";
             Langs["py"] = this;
+            StringDelimiters.Add(new StringDelimiterPair("\"", "\""));
+            StringDelimiters.Add(new StringDelimiterPair("'", "'"));
         }
     }
 }

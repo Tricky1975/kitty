@@ -148,14 +148,12 @@ namespace Kitty {
 
 
     class KittyPL : KittyHigh {
+
         protected List<string> KeyWords= new List<string>();
         protected List<string> BaseTypes = new List<string>();
-        protected string stringstart = "\"";
-        protected string stringend = "\"";
+        protected List<StringDelimiterPair> StringDelimiters = new List<StringDelimiterPair>();
         protected string mlstringstart = "@\"";
         protected string mlstringend = "\"";
-        protected string astringstart = "'";
-        protected string astringend = "'";
         protected string singcomment = "//";
         protected string mulcommentstart = "/*";
         protected string mulcommentend = "*/";
@@ -164,7 +162,6 @@ namespace Kitty {
         protected bool mulcommentfullline = false; // Needed for BlitzMax where commands taking up a full line are used for multi line comments. This is not entirely fool-proof, but it'll have to do.
         protected bool caseinsensitive = false;
         protected bool supcom = true;
-
 
         public override void Show(string src, bool linenumbers = false) {
             string word = "";
@@ -231,30 +228,55 @@ namespace Kitty {
                 word = "";
                 var singcomm = false;
                 var singstring = false;
-                var secondstring = false;
                 var stringescape = false;
+                bool wassingstring = false;
                 for (int p = 0; p < lines[i].Length; p++) {
                     var ch = lines[i][p];
                     // Console.WriteLine($"DEBUG! {lines[i].Substring(p, singcomment.Length)} {singcomment}");
-                    bool wassingstring = singstring;
-                    bool wassingstring2 = secondstring;
+                    wassingstring = singstring;
                     singcomm = singcomm || (p < lines[i].Length - 1 && lines[i].Substring(p, singcomment.Length) == singcomment && (!singstring) && (!mulcomm) && supcom);
                     try {
-                        mulcomm = mulcomm || (p < lines[i].Length - 1 && lines[i].Substring(p, Math.Min(lines[i].Length-p, mulcommentstart.Length)) == mulcommentstart && (!singstring) & (!singcomm) && mulcomment);
+                        mulcomm = mulcomm || (p < lines[i].Length - 1 && lines[i].Substring(p, Math.Min(lines[i].Length - p, mulcommentstart.Length)) == mulcommentstart && (!singstring) & (!singcomm) && mulcomment);
                     } catch (Exception e) {
-                        System.Diagnostics.Debug.WriteLine($"Error: {e.Message} (parsing line {i+1}/{lines.Length}; pos {p})");
+                        System.Diagnostics.Debug.WriteLine($"Error: {e.Message} (parsing line {i + 1}/{lines.Length}; pos {p})");
                         System.Console.Beep(); mle++;
                         //mulcomm = false;
                     }
-                    singstring = singstring || (p < lines[i].Length - 1 && lines[i].Substring(p, stringstart.Length) == stringstart && (!singcomm) && (!mulcomm));
-                    secondstring = secondstring || (p < lines[i].Length - 1 && lines[i].Substring(p, astringstart.Length) == astringstart && (!singcomm) && (!mulcomm));
-                    if (singstring || secondstring) {
+
+                    string currentStart = "";
+
+                    Func<bool> matchStart = delegate
+                    {
+                        foreach (StringDelimiterPair stringDelimiter in StringDelimiters)
+                        {
+                            if (lines[i].Substring(p, stringDelimiter.Start.Length) == stringDelimiter.Start)
+                            {
+                                currentStart = stringDelimiter.Start;
+                                return true;
+                            }
+                        }
+                        return false;
+                    };
+
+                    Func<string, bool> matchEnd = delegate (string start)
+                    {
+                        foreach (StringDelimiterPair stringDelimiter in StringDelimiters)
+                        {
+                            if (lines[i].Substring(p, stringDelimiter.End.Length) == start)
+                                return true;
+                        }
+                        return false;
+                    };
+
+                    singstring = singstring || (p < lines[i].Length - 1 && matchStart() && (!singcomm) && (!mulcomm));
+                    if (singstring) {
                         Console.ForegroundColor = KittyColors.String;
                         Console.Write($"{ch}");
-                        if (wassingstring && p < lines[i].Length && lines[i].Substring(p, stringend.Length) == stringend && !stringescape)
+                        if (wassingstring && p < lines[i].Length && matchEnd(currentStart) && !stringescape)
+                        {
                             singstring = false;
-                        else if (wassingstring2 && p < lines[i].Length && lines[i].Substring(p, astringend.Length) == astringend && !stringescape)
-                            secondstring = false;
+                            currentStart = "";
+                        }
                         else
                             stringescape = ch == escape && !stringescape;
                     } else if (mulcomm) {

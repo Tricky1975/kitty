@@ -39,6 +39,12 @@ namespace Kitty {
     }
 
     abstract class KittyOutput {
+
+        ~KittyOutput()
+        {
+            Console.ResetColor();
+        }
+
         abstract public void Write(string a);
         abstract public void WriteLine(string a);
         public void WriteLine() => WriteLine("");

@@ -7,4 +7,19 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Include="..\TrickyUnits\Dirry.cs" Link="Units\Dirry.cs" />
+    <Compile Include="..\TrickyUnits\FileList.cs" Link="Units\FileList.cs" />
+    <Compile Include="..\TrickyUnits\mkl.cs" Link="Units\mkl.cs" />
+    <Compile Include="..\TrickyUnits\qstr.cs" Link="Units\qstr.cs" />
+    <Compile Include="..\TrickyUnits\qstream.cs" Link="Units\qstream.cs" />
+    <Compile Include="..\TrickyUnits\QuickConsoleColors.cs" Link="Units\QuickConsoleColors.cs" />
+    <Compile Include="..\TrickyUnits\RegExTree.cs" Link="Units\RegExTree.cs" />
+    <Compile Include="..\TrickyUnits\TrickyDbg.cs" Link="Units\TrickyDbg.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Units\" />
+  </ItemGroup>
+
 </Project>

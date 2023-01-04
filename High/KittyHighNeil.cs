@@ -88,6 +88,8 @@ namespace Kitty {
             KeyWords.Add("import");
             KeyWords.Add("export");
 
+            KeyWords.Add("module");
+
             //KeyWords.Add("foreach");
             Langs["neil"] = this;
             Language = "Neil";
